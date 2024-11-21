@@ -2,8 +2,10 @@ const vm = Vue.createApp({
     data() {
         return {
             firstName: 'Thor',
-            // middleName: 'Halvorsen',
             lastName: 'Eikeland',
+            url: 'https://google.com',
+            url2: 'https://vg.no',
+            // middleName: 'Halvorsen',
             // age: 33,
         }
     },
