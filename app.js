@@ -4,7 +4,6 @@ const vm = Vue.createApp({
             firstName: 'Thor',
             lastName: 'Eikeland',
             url: 'https://google.com',
-            url2: 'https://vg.no',
             // middleName: 'Halvorsen',
             // age: 33,
         }
