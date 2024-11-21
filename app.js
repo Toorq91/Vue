@@ -1,10 +1,10 @@
 Vue.createApp({
     data() {
         return {
-            firstName: 'Thor',
-            middleName: 'Christer',
-            lastName: 'Eikeland',
-            age: 33
+            firstName: 'Test',
+            middleName: 'Testing',
+            lastName: 'Testington',
+            age: 894
         }
     }
 }).mount('#app')
@@ -12,9 +12,10 @@ Vue.createApp({
 Vue.createApp({
     data() {
         return {
-            firstName: 'Ida',
-            lastName: 'Bakke',
-            age: 33
+            firstName: 'Test',
+            middleName: 'The',
+            lastName: 'Second',
+            age: 708
         }
     }
 }).mount('#app2')
