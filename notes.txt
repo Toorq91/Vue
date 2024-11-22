@@ -10,3 +10,6 @@ Her kalles fullName()-metoden fra JS-filen for å vise fullstendig navn, hvor la
 Ved å bruke :href som en kortform for v-bind:href kan jeg dynamisk binde en verdi (her url) til href-attributtet.
 
 Ved å bruke v-model bindes input-feltet dynamisk til firstName-variabelen, slik at endringer i feltet oppdaterer dataen i Vue og omvendt.
+
+Jeg bruker v-html for å gjengi raw_url som HTML, noe som er nyttig for dynamisk innhold som inneholder HTML (f.eks. lenker). 
+Sikkerhet: v-html kan utgjøre en risiko hvis innholdet ikke er sanitert, da det kan åpne for XSS-angrep. Sørg for at innholdet er trygt før bruk. 
