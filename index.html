@@ -7,20 +7,12 @@
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-  <!-- Ved å bruke v-cloak kan jeg unngå at brukeren ser ubehandlet Vue-template (f.eks. {{ fullName() }}) før appen er ferdig initialisert. 
-       For at v-cloak skal fungere, trenger du vanligvis en CSS-stil for å skjule elementene som bruke dette: 
-       [v-cloak] {
-        display: none;
-      } -->
   <div id="app" v-cloak>
-    <!-- Her kalles fullName()-metoden fra JS-filen for å vise fullstendig navn, hvor lastName automatisk konverteres til uppercase. -->
         <p>{{ fullName() }}</p>
-        <!-- Ved å bruke :href som en kortform for v-bind:href kan jeg dynamisk binde en verdi (her url) til href-attributtet. -->
         <p><a :href="url" target="_blank">Google</a></p>
         <hr />
 
         <label>First Name</label>
-        <!-- Ved å bruke v-model bindes input-feltet dynamisk til firstName-variabelen, slik at endringer i feltet oppdaterer dataen i Vue og omvendt. -->
         <input type="text" v-model="firstName"/>
 
         <label>Last Name</label>
