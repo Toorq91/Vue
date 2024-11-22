@@ -1,8 +1,8 @@
 const vm = Vue.createApp({
     data() {
         return {
-            firstName: 'Thor',
-            lastName: 'Eikeland',
+            firstName: 'Test',
+            lastName: 'Testington',
             url: 'https://google.com',
             raw_url: '<a href="https://google.com" target="_blank">Google</a>'
             // middleName: 'Halvorsen',
