@@ -4,14 +4,17 @@ const vm = Vue.createApp({
             firstName: 'Test',
             lastName: 'Testington',
             url: 'https://google.com',
-            raw_url: '<a href="https://google.com" target="_blank">Google</a>'
+            raw_url: '<a href="https://google.com" target="_blank">Google</a>',
+            age: 20,
             // middleName: 'Halvorsen',
-            // age: 33,
         }
     },
     methods: {
         fullName() {
             return `${this.firstName} ${this.lastName.toUpperCase()}`
+        },
+        increment() {
+            this.age ++
         }
     }
 }).mount('#app')

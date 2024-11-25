@@ -13,3 +13,8 @@ Ved å bruke v-model bindes input-feltet dynamisk til firstName-variabelen, slik
 
 Jeg bruker v-html for å gjengi raw_url som HTML, noe som er nyttig for dynamisk innhold som inneholder HTML (f.eks. lenker). 
 Sikkerhet: v-html kan utgjøre en risiko hvis innholdet ikke er sanitert, da det kan åpne for XSS-angrep. Sørg for at innholdet er trygt før bruk. 
+
+Når knappen blir klikket, vil Vue kalle metoden `increment` som er definert i `methods`-objektet.
+     - `@click` er en kortform for `v-on:click`, som binder en klikkhendelse til knappen.
+     - `increment` er metoden som blir kjørt når knappen blir klikket.
+     - I dette tilfellet øker `increment` verdien av `age` med 1 (`this.age++`).
