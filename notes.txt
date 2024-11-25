@@ -49,3 +49,11 @@ Event Modifier:
 - Vue tilbyr innebygde event modifiers som `.prevent`, `.stop` osv., for å forenkle koden og gjøre den mer lesbar.
 - Ved å bruke `.prevent` på `@input`, håndteres `event.preventDefault()` automatisk.
 - Dette gjør koden enklere, da det ikke lenger er nødvendig å skrive `event.preventDefault()` manuelt i metoden.
+
+Keyboard Events and Modifiers:
+- Lagt til `middleName` med en `@keyup` event listener som oppdaterer verdien kun når brukeren trykker på `Enter`.
+- Bruken av `@keyup.enter` sikrer at oppdateringen kun skjer når den spesifikke tasten (`Enter`) trykkes, i stedet for ved hvert tastetrykk.
+- Dette gir en kontrollert oppdatering, hvor brukeren må trykke en bestemt knapp for å sende verdien.
+- Keyboard event listeners kan også modifiseres for å kreve tastekombinasjoner. For eksempel:
+  - `@keyup.ctrl.enter`: Krever at både `Ctrl` og `Enter` trykkes sammen.
+  - `@keyup.shift.k`: Krever `Shift` og `K` samtidig.
