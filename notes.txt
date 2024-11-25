@@ -18,3 +18,11 @@ Når knappen blir klikket, vil Vue kalle metoden `increment` som er definert i `
      - `@click` er en kortform for `v-on:click`, som binder en klikkhendelse til knappen.
      - `increment` er metoden som blir kjørt når knappen blir klikket.
      - I dette tilfellet øker `increment` verdien av `age` med 1 (`this.age++`).
+
+Når skal du bruke `:value` og `@input`?
+
+- `:value` og `@input` gir deg mer fleksibilitet og kontroll enn `v-model`. 
+  Bruk dette når du trenger:
+  1. Å kjøre tilpasset logikk før dataen oppdateres.
+  2. Å manipulere eller validere inputen før du binder den til en data-egenskap.
+  3. Mer spesifikk håndtering av brukerens inndata (f.eks. spesialtilfeller eller flere felt).
