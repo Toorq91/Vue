@@ -4,25 +4,43 @@ For at v-cloak skal fungere, trenger du vanligvis en CSS-stil for å skjule elem
         display: none;
        }
 
+
 Her kalles fullName()-metoden fra JS-filen for å vise fullstendig navn, hvor lastName automatisk konverteres til uppercase.
      <p>{{ fullName() }}</p>
 
+
 Ved å bruke :href som en kortform for v-bind:href kan jeg dynamisk binde en verdi (her url) til href-attributtet.
+
 
 Ved å bruke v-model bindes input-feltet dynamisk til firstName-variabelen, slik at endringer i feltet oppdaterer dataen i Vue og omvendt.
 
+
 Jeg bruker v-html for å gjengi raw_url som HTML, noe som er nyttig for dynamisk innhold som inneholder HTML (f.eks. lenker). 
 Sikkerhet: v-html kan utgjøre en risiko hvis innholdet ikke er sanitert, da det kan åpne for XSS-angrep. Sørg for at innholdet er trygt før bruk. 
+
 
 Når knappen blir klikket, vil Vue kalle metoden `increment` som er definert i `methods`-objektet.
      - `@click` er en kortform for `v-on:click`, som binder en klikkhendelse til knappen.
      - `increment` er metoden som blir kjørt når knappen blir klikket.
      - I dette tilfellet øker `increment` verdien av `age` med 1 (`this.age++`).
 
-Når skal du bruke `:value` og `@input`?
 
+Når skal du bruke `:value` og `@input`?
 - `:value` og `@input` gir deg mer fleksibilitet og kontroll enn `v-model`. 
   Bruk dette når du trenger:
   1. Å kjøre tilpasset logikk før dataen oppdateres.
   2. Å manipulere eller validere inputen før du binder den til en data-egenskap.
   3. Mer spesifikk håndtering av brukerens inndata (f.eks. spesialtilfeller eller flere felt).
+
+
+  Hvorfor bruke `updateLastName('Last name event triggered!', $event)`?
+- Her sender vi både en tilpasset melding (`msg`) og selve eventet (`$event`) til metoden `updateLastName`.
+- Dette gir oss fleksibilitet til å:
+  1. Logge eller utføre spesifikke handlinger (f.eks. debugging, meldinger) basert på konteksten.
+  2. Håndtere eventet mer direkte (f.eks. med `event.preventDefault()`).
+  3. Utføre oppdateringen (`this.lastName = event.target.value`) og samtidig ha kontroll over logikk før og etter oppdateringen.
+
+Eksempel på hva som skjer:
+- Når brukeren skriver noe, kalles `updateLastName`.
+- Melding (`'Last name event triggered!'`) logges i konsollen for debugging.
+- Eventet brukes til å oppdatere `lastName` med verdien fra input-feltet.
