@@ -57,3 +57,14 @@ Keyboard Events and Modifiers:
 - Keyboard event listeners kan også modifiseres for å kreve tastekombinasjoner. For eksempel:
   - `@keyup.ctrl.enter`: Krever at både `Ctrl` og `Enter` trykkes sammen.
   - `@keyup.shift.k`: Krever `Shift` og `K` samtidig.
+
+  Computed properties:
+  Hvorfor bruke `computed` i stedet for `methods`?
+1. `computed` er reaktiv:
+   - Beregningen caches og kjøres bare på nytt når de reaktive avhengighetene endres.
+   - Mer effektivt enn `methods`, som alltid kjøres på nytt ved hver rendering.
+2. Bedre ytelse:
+   - For komplekse beregninger eller ofte brukte verdier sparer `computed` ressurser ved å unngå unødvendige kall.
+3. Automatisk oppdatering:
+   - Computed-egenskaper oppdateres automatisk når avhengige data endrer seg, noe som gjør dem ideelle for dynamiske verdier.
+
