@@ -68,3 +68,20 @@ Keyboard Events and Modifiers:
 3. Automatisk oppdatering:
    - Computed-egenskaper oppdateres automatisk når avhengige data endrer seg, noe som gjør dem ideelle for dynamiske verdier.
 
+Watchers:
+Når og hvorfor bruke `watch` i Vue:
+1. Hva er `watch`?
+   - `watch` lytter etter endringer i spesifikke dataegenskaper og utfører kode som en respons på disse endringene.
+   - Brukes når du trenger å reagere på dataendringer uten å påvirke UI direkte (dette skiller det fra `computed`).
+2. Når bør du bruke det?
+   - Når du trenger sideeffekter basert på dataendringer, som API-kall, logging, eller asynkrone handlinger.
+   - Når du vil overvåke endringer i data og utføre oppgaver som ikke handler om å oppdatere UI.
+3. Eksempel fra koden:
+   - Her brukes `watch` på `age` for å tilbakestille verdien til `20` etter 3 sekunder, uansett hvordan `age` endres.
+   watch: {
+       age(newVal, oldVal) {
+           setTimeout(() => {
+               this.age = 20;
+           }, 3000);
+       }
+   }
