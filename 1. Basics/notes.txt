@@ -1,0 +1,87 @@
+Ved å bruke v-cloak kan jeg unngå at brukeren ser ubehandlet Vue-template (f.eks. {{ fullName() }}) før appen er ferdig initialisert. 
+For at v-cloak skal fungere, trenger du vanligvis en CSS-stil for å skjule elementene som bruke dette: 
+       [v-cloak] {
+        display: none;
+       }
+
+
+Her kalles fullName()-metoden fra JS-filen for å vise fullstendig navn, hvor lastName automatisk konverteres til uppercase.
+     <p>{{ fullName() }}</p>
+
+
+Ved å bruke :href som en kortform for v-bind:href kan jeg dynamisk binde en verdi (her url) til href-attributtet.
+
+
+Ved å bruke v-model bindes input-feltet dynamisk til firstName-variabelen, slik at endringer i feltet oppdaterer dataen i Vue og omvendt.
+
+
+Jeg bruker v-html for å gjengi raw_url som HTML, noe som er nyttig for dynamisk innhold som inneholder HTML (f.eks. lenker). 
+Sikkerhet: v-html kan utgjøre en risiko hvis innholdet ikke er sanitert, da det kan åpne for XSS-angrep. Sørg for at innholdet er trygt før bruk. 
+
+
+Når knappen blir klikket, vil Vue kalle metoden `increment` som er definert i `methods`-objektet.
+     - `@click` er en kortform for `v-on:click`, som binder en klikkhendelse til knappen.
+     - `increment` er metoden som blir kjørt når knappen blir klikket.
+     - I dette tilfellet øker `increment` verdien av `age` med 1 (`this.age++`).
+
+
+Når skal du bruke `:value` og `@input`?
+- `:value` og `@input` gir deg mer fleksibilitet og kontroll enn `v-model`. 
+  Bruk dette når du trenger:
+  1. Å kjøre tilpasset logikk før dataen oppdateres.
+  2. Å manipulere eller validere inputen før du binder den til en data-egenskap.
+  3. Mer spesifikk håndtering av brukerens inndata (f.eks. spesialtilfeller eller flere felt).
+
+
+  Hvorfor bruke `updateLastName('Last name event triggered!', $event)`?
+- Her sender vi både en tilpasset melding (`msg`) og selve eventet (`$event`) til metoden `updateLastName`.
+- Dette gir oss fleksibilitet til å:
+  1. Logge eller utføre spesifikke handlinger (f.eks. debugging, meldinger) basert på konteksten.
+  2. Håndtere eventet mer direkte (f.eks. med `event.preventDefault()`).
+  3. Utføre oppdateringen (`this.lastName = event.target.value`) og samtidig ha kontroll over logikk før og etter oppdateringen.
+
+Eksempel på hva som skjer:
+- Når brukeren skriver noe, kalles `updateLastName`.
+- Melding (`'Last name event triggered!'`) logges i konsollen for debugging.
+- Eventet brukes til å oppdatere `lastName` med verdien fra input-feltet.
+
+Event Modifier:
+- Vue tilbyr innebygde event modifiers som `.prevent`, `.stop` osv., for å forenkle koden og gjøre den mer lesbar.
+- Ved å bruke `.prevent` på `@input`, håndteres `event.preventDefault()` automatisk.
+- Dette gjør koden enklere, da det ikke lenger er nødvendig å skrive `event.preventDefault()` manuelt i metoden.
+
+Keyboard Events and Modifiers:
+- Lagt til `middleName` med en `@keyup` event listener som oppdaterer verdien kun når brukeren trykker på `Enter`.
+- Bruken av `@keyup.enter` sikrer at oppdateringen kun skjer når den spesifikke tasten (`Enter`) trykkes, i stedet for ved hvert tastetrykk.
+- Dette gir en kontrollert oppdatering, hvor brukeren må trykke en bestemt knapp for å sende verdien.
+- Keyboard event listeners kan også modifiseres for å kreve tastekombinasjoner. For eksempel:
+  - `@keyup.ctrl.enter`: Krever at både `Ctrl` og `Enter` trykkes sammen.
+  - `@keyup.shift.k`: Krever `Shift` og `K` samtidig.
+
+  Computed properties:
+  Hvorfor bruke `computed` i stedet for `methods`?
+1. `computed` er reaktiv:
+   - Beregningen caches og kjøres bare på nytt når de reaktive avhengighetene endres.
+   - Mer effektivt enn `methods`, som alltid kjøres på nytt ved hver rendering.
+2. Bedre ytelse:
+   - For komplekse beregninger eller ofte brukte verdier sparer `computed` ressurser ved å unngå unødvendige kall.
+3. Automatisk oppdatering:
+   - Computed-egenskaper oppdateres automatisk når avhengige data endrer seg, noe som gjør dem ideelle for dynamiske verdier.
+
+Watchers:
+Når og hvorfor bruke `watch` i Vue:
+1. Hva er `watch`?
+   - `watch` lytter etter endringer i spesifikke dataegenskaper og utfører kode som en respons på disse endringene.
+   - Brukes når du trenger å reagere på dataendringer uten å påvirke UI direkte (dette skiller det fra `computed`).
+2. Når bør du bruke det?
+   - Når du trenger sideeffekter basert på dataendringer, som API-kall, logging, eller asynkrone handlinger.
+   - Når du vil overvåke endringer i data og utføre oppgaver som ikke handler om å oppdatere UI.
+3. Eksempel fra koden:
+   - Her brukes `watch` på `age` for å tilbakestille verdien til `20` etter 3 sekunder, uansett hvordan `age` endres.
+   watch: {
+       age(newVal, oldVal) {
+           setTimeout(() => {
+               this.age = 20;
+           }, 3000);
+       }
+   }
